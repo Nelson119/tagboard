@@ -35,12 +35,37 @@ window.fbAsyncInit = function() {
 	});
 	// Usage
 	FB.setAccessToken('EAAFsuq6vC7UBAErSUBi7QCrQX0pRYbf1LfxBw3dUZAoOB7RbMQmhqn25hlP2AxDjiFniXcGlZAj5NWCrt8gvxcU68pd14wTshlJjASydWme3YsxIjlFlqHU5WKY0MKonZAQEQ5CPuI0eaGE1763VK8djDAaLLkZD');
-	FB.api('17843659945028874/recent_media',{
-        user_id: '17841401384458419',
-        fields: 'id,media_type,comments_count,like_count,media_url'
-    }, function(r){
-		console.log(r);
+	var userID, hashTag = 'GalaxyS10', hashTagID = [];
+	FB.getLoginStatus(function(r){
+		userID = r.authResponse.userID;
+		getHashTagID();
 	});
+	function getHashTagID(){
+		FB.api('ig_hashtag_search',{
+			user_id: '17841401384458419',
+			q: 'galaxys10',
+			fields: 'name'
+		}, function(r){
+			for(var tag in r.data){
+				getPosts(tag)
+			}
+		});
+		ig_hashtag_search?user_id=17841401384458419&q=galaxys10
+	}
+	function getPosts(tag){
+		tag.posts = [];
+		FB.api(tag.id + '/recent_media',{
+			user_id: userID,
+			fields: 'id,media_type,comments_count,like_count,media_url'
+		}, function(r){
+			console.log(r);
+			for(var post in r.data){
+				tag.posts.push(post);
+			}
+			hashTagID.push(tag);
+			console.log(hashTagID);
+		});	
+	}
 };
 
 (function(d, s, id){
