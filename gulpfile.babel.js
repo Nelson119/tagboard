@@ -210,3 +210,8 @@ gulp.task('tinypng', function() {
         .pipe($.tinypng('13I8NM09OlZ1E0vNNq4c3Nq9oFTT8Y-v'))
         .pipe(gulp.dest('app/img'));
 });
+gulp.task('test', ['lint'], function() {
+//   return gulp.src('test/**/*.js', {read: false})
+//       .pipe(mocha());
+    return;
+});
