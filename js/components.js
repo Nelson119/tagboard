@@ -1,0 +1,1 @@
+"use strict";app.partial.kv=function(a,d){d.on("page:update",function(a,n){d.addClass("loaded")})},app.partial.rule=function(a,d){d.on("page:update",function(a,n){d.addClass("loaded")})};

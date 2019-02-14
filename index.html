@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW" itemscope="" itemtype="http://schema.org/WebPage">
+<head>
+
+    
+    <title>title</title>
+    <meta name="title" content="title">
+
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    
+    
+    <script src="js/modernizr.js"></script>
+
+    <link rel="stylesheet" href="css/vendor.css">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="canonical" href="url">
+    
+    
+    <meta name="keywords" content="keywords">
+    <meta name="description" content="description">
+    <meta name="date" content="2019-2-14 4:23:52"><!--Latest Publishing Date -->
+
+    <meta name="twitter:card" content="Summary">
+    <meta name="twitter:site" content="@site">
+    <meta name="twitter:creator" content="@site">
+    <meta name="twitter:url" content="url">
+    <meta name="twitter:title" content="title">
+    <meta name="twitter:description" content="description">
+    <meta name='twitter:image' content="image"/>
+
+    <meta property="og:url" content="url">
+    <meta property="og:image" content="image">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="site">
+    <meta property="og:locale" content="zh-TW">
+    <meta property="og:title" content="title"/>
+    <meta property="og:description" content="description"/>
+    <meta property="og:country-name" content="tw"/>    
+
+    <meta itemprop="name" content="site">
+    <meta itemprop="image" content="image">
+    <meta itemprop="url" content="url">
+    <meta itemprop="description" content="description">
+    <meta itemprop="keywords" content="keywords">
+
+    <link rel="shortcut icon" href="icon">
+    <link rel="apple-touch-icon" href="icon" sizes="144x144">
+        
+        
+</head>
+<body> 
+
+
+
+
+	<div class="content" role="content">
+			
+
+		
+	<header>
+		<nav class="text-center vertical-middle in">
+			<a class="vertical-middle text-center active" href="#" onclick="click_s_code_v33('o', '');">
+				首頁
+			</a>
+			<a class="vertical-middle text-center" href="#tour" onclick="click_s_code_v33('o', '');">
+				活動辦法
+			</a>
+		</nav>
+	</header>
+
+		<section class="main-content">
+			
+			<section class="kv" role="kv" data-nav="首頁" id="index">
+				
+				<aside class="viewport">
+						<!-- <h3>首頁</h3> -->
+				</aside>
+			</section>
+
+			
+            <section role="rule" class="section" data-nav="活動辦法">
+                <aside class="viewport">
+                    <!-- <h3>活動辦法</h3> -->
+                </aside>
+            </section>
+		</section>
+
+
+	</div>
+
+
+
+
+	<script src="js/vendor.js"></script>
+
+
+	<script src="js/main.js"></script>
+
+	<script src="js/components.js"></script>
+
+<script>
+var userID, hashTag = 'GalaxyS10', hashTagID = [];
+
+window.fbAsyncInit = function() {
+	FB.init({
+	appId            : '401024027134901',
+	autoLogAppEvents : true,
+	xfbml            : true,
+	version          : 'v3.2'
+	});
+	if(FB.provide){
+		FB.provide('', {
+		'setAccessToken': function(t) {
+			this._authResponse = { 'accessToken': t };
+		}
+		});
+		// Usage
+		FB.setAccessToken('EAAFsuq6vC7UBAErSUBi7QCrQX0pRYbf1LfxBw3dUZAoOB7RbMQmhqn25hlP2AxDjiFniXcGlZAj5NWCrt8gvxcU68pd14wTshlJjASydWme3YsxIjlFlqHU5WKY0MKonZAQEQ5CPuI0eaGE1763VK8djDAaLLkZD');
+	}
+	FB.getLoginStatus(function(r){
+		userID = r.authResponse.userID;
+		getHashTagID();
+	});
+
+};
+function getHashTagID(){
+	FB.api('ig_hashtag_search',{
+		user_id: userID,
+		q: hashTag,
+		fields: 'name'
+	}, function(r){
+		for(var tag in r.data){
+			getPosts(tag)
+		}
+	});
+}
+function getPosts(tag){
+	tag.posts = [];
+	FB.api(tag.id + '/recent_media',{
+		user_id: userID,
+		fields: 'id,media_type,comments_count,like_count,media_url,permalink,caption'
+	}, function(r){
+		console.log(r);
+		for(var post in r.data){
+			tag.posts.push(post);
+		}
+		hashTagID.push(tag);
+		console.log(hashTagID);
+	});	
+}
+
+(function(d, s, id){
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement(s); js.id = id;
+	js.src = "https://connect.facebook.net/en_US/sdk.js";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+</body>
+</html>
+    
