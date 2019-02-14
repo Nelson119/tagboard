@@ -42,8 +42,8 @@ window.fbAsyncInit = function() {
 	});
 	function getHashTagID(){
 		FB.api('ig_hashtag_search',{
-			user_id: '17841401384458419',
-			q: 'galaxys10',
+			user_id: userID,
+			q: hashTag,
 			fields: 'name'
 		}, function(r){
 			for(var tag in r.data){
@@ -56,7 +56,7 @@ window.fbAsyncInit = function() {
 		tag.posts = [];
 		FB.api(tag.id + '/recent_media',{
 			user_id: userID,
-			fields: 'id,media_type,comments_count,like_count,media_url'
+			fields: 'id,media_type,comments_count,like_count,media_url,permalink'
 		}, function(r){
 			console.log(r);
 			for(var post in r.data){
