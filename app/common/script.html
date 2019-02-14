@@ -28,6 +28,13 @@ window.fbAsyncInit = function() {
 	xfbml            : true,
 	version          : 'v3.2'
 	});
+	FB.provide('', {
+	'setAccessToken': function(t) {
+		this._authResponse = { 'accessToken': t };
+	}
+	});
+	// Usage
+	FB.setAccessToken('EAAFsuq6vC7UBAErSUBi7QCrQX0pRYbf1LfxBw3dUZAoOB7RbMQmhqn25hlP2AxDjiFniXcGlZAj5NWCrt8gvxcU68pd14wTshlJjASydWme3YsxIjlFlqHU5WKY0MKonZAQEQ5CPuI0eaGE1763VK8djDAaLLkZD');
 };
 
 (function(d, s, id){
